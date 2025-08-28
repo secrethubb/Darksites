@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: hsl(240, 10%, 4%);
+            color: hsl(0, 0%, 95%);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            min-height: 100vh;
+        }
+        
+        .status-header {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            background-color: hsl(120, 100%, 25% / 0.2);
+            color: hsl(120, 100%, 70%);
+            border: 1px solid hsl(120, 100%, 25% / 0.3);
+        }
+        
+        .status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: hsl(120, 100%, 70%);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .main-content {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+        
+        .features-section {
+            margin-bottom: 3rem;
+        }
+        
+        .features-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .features-emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .features-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .features-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .feature-card {
+            background-color: hsl(240, 6%, 10%);
+            border: 1px solid hsl(240, 6%, 20%);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: background-color 0.2s;
+        }
+        
+        .feature-card:hover {
+            background-color: hsl(240, 6%, 12%);
+        }
+        
+        .feature-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .main-launch-btn {
+            display: inline-block;
+            background-color: hsl(217, 91%, 60%);
+            color: hsl(0, 0%, 98%);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.125rem;
+            transition: all 0.2s;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-launch-btn:hover {
+            background-color: hsl(217, 91%, 55%);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tools-section {
+            text-align: center;
+        }
+        
+        .tools-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tools-emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .tools-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .tools-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .tool-card {
+            background-color: hsl(240, 6%, 10%);
+            border: 1px solid hsl(240, 6%, 20%);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: background-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            background-color: hsl(240, 6%, 12%);
+        }
+        
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-description {
+            color: hsl(240, 5%, 65%);
+            margin-bottom: 1rem;
+        }
+        
+        .tool-launch-btn {
+            background-color: hsl(240, 5%, 15%);
+            color: hsl(0, 0%, 90%);
+            padding: 0.5rem 1rem;
+            border: 1px solid hsl(240, 6%, 20%);
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .tool-launch-btn:hover {
+            background-color: hsl(240, 5%, 18%);
+        }
+        
+        @media (max-width: 767px) {
+            .tool-launch-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Status -->
+        <div class="status-header">
+            <span class="status-badge">
+                <div class="status-dot"></div>
+                ONLINE
+            </span>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-emoji">🚀</div>
+                <h1 class="hero-title">Dark website</h1>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <div class="features-header">
+                        <span class="features-emoji">👑</span>
+                        <h2 class="features-title">Features</h2>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-emoji">🎂</div>
+                            <p>Premium Bypass Technology</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-emoji">💯</div>
+                            <p>Ultra Fast Performance</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-emoji">🌐</div>
+                            <p>Advanced Security Features</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-emoji">⚡</div>
+                            <p>Instant Access</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-emoji">🔃</div>
+                            <p>No Delays or Captcha</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Launch Button -->
+                <a href="https://app.beamers.si/u/DarksBeam" target="_blank" rel="noopener noreferrer" class="main-launch-btn">
+                    LAUNCH
+                </a>
+            </div>
+
+            <!-- Tools Section -->
+            <div class="tools-section">
+                <div class="tools-header">
+                    <span class="tools-emoji">🛠️</span>
+                    <h2 class="tools-title">ALL TOOLS</h2>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Main Bypasser -->
+                    <div class="tool-card">
+                        <h3 class="tool-title">MAIN BYPASSER</h3>
+                        <p class="tool-description">Primary bypass tool for all your needs</p>
+                        <a href="#" class="tool-launch-btn">LAUNCH</a>
+                    </div>
+                    
+                    <!-- Webhook Spammer -->
+                    <div class="tool-card">
+                        <h3 class="tool-title">WEBHOOK SPAMMER</h3>
+                        <p class="tool-description">Automatically Sent Message 0.1 Countdown</p>
+                        <a href="#" class="tool-launch-btn">LAUNCH</a>
+                    </div>
+                    
+                    <!-- Hider Link -->
+                    <div class="tool-card">
+                        <h3 class="tool-title">HIDER LINK</h3>
+                        <p class="tool-description">Hide and protect your links</p>
+                        <a href="#" class="tool-launch-btn">LAUNCH</a>
+                    </div>
+                    
+                    <!-- Auto Message -->
+                    <div class="tool-card">
+                        <h3 class="tool-title">AUTO MESSAGE</h3>
+                        <p class="tool-description">Automated messaging system</p>
+                        <a href="#" class="tool-launch-btn">LAUNCH</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
